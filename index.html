@@ -712,15 +712,31 @@
           });
           reviewStatus.textContent = "후기가 수정되었습니다.";
         } else {
+          console.log("1. 후기 저장 요청 시작");
+
           await addDoc(reviewsRef, {
             name,
             content,
             rating: selectedRating,
             createdAt: serverTimestamp()
           });
-          reviewStatus.textContent = "후기가 등록되었습니다. 다른 방문자에게도 표시됩니다.";
-        }
 
+          console.log("2. 후기 저장 요청 완료");
+
+          reviewStatus.textContent =
+          "후기가 등록되었습니다. 다른 방문자에게도 표시됩니다.";console.log("1. 후기 저장 요청 시작");
+
+await addDoc(reviewsRef, {
+  name,
+  content,
+  rating: selectedRating,
+  createdAt: serverTimestamp()
+});
+
+console.log("2. 후기 저장 요청 완료");
+
+reviewStatus.textContent =
+  "후기가 등록되었습니다. 다른 방문자에게도 표시됩니다.";
         resetReviewForm();
       } catch (error) {
         console.error(error);
