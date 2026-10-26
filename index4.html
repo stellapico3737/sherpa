@@ -1,0 +1,846 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHERPA | 셰르파 비즈니스 컨설팅</title>
+  <meta name="description" content="셰르파는 시장 분석과 트렌드 리서치를 바탕으로 기업의 다음 방향을 설계합니다.">
+
+  <style>
+    :root {
+      --navy: #172b4d;
+      --blue: #3158a6;
+      --gold: #d7a94b;
+      --cream: #f7f6f2;
+      --white: #ffffff;
+      --text: #273449;
+      --muted: #6b778c;
+      --border: #e2e6ed;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--white);
+      font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .container { width: min(1120px, 90%); margin: auto; }
+    .eyebrow {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h2 { font-size: clamp(27px, 4vw, 38px); line-height: 1.3; }
+    .section { padding: 90px 0; }
+    .section-heading { max-width: 650px; margin-bottom: 36px; }
+    .section-heading p { color: var(--muted); }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--navy);
+      font-weight: 900;
+      letter-spacing: 2px;
+      font-size: 22px;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      background: var(--navy);
+      color: var(--gold);
+      border-radius: 10px 10px 10px 2px;
+      font-size: 19px;
+    }
+    .nav-links { display: flex; gap: 24px; font-size: 14px; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta, .primary-button {
+      display: inline-block;
+      border: 0;
+      border-radius: 7px;
+      padding: 12px 20px;
+      background: var(--navy);
+      color: white;
+      font-weight: 700;
+    }
+
+    .hero {
+      overflow: hidden;
+      position: relative;
+      padding: 110px 0 105px;
+      color: white;
+      background:
+        radial-gradient(ellipse at 85% 20%, rgba(215,169,75,.25), transparent 36%),
+        linear-gradient(125deg, #14233d, #243e6d);
+    }
+    .hero::after {
+      content: "S";
+      position: absolute;
+      right: 7%;
+      top: 5%;
+      font-size: clamp(230px, 38vw, 470px);
+      line-height: 1;
+      font-weight: 900;
+      color: rgba(255,255,255,.035);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .hero .eyebrow { color: var(--gold); }
+    .hero h1 {
+      margin: 22px 0;
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.2;
+      letter-spacing: -2px;
+    }
+    .hero p { max-width: 590px; color: #dbe3f1; font-size: 17px; }
+    .hero .primary-button { margin-top: 15px; background: var(--gold); color: #172b4d; }
+    .hero-note { margin-top: 35px; color: #c4cee0; font-size: 13px; }
+
+    .intro-grid, .service-grid, .trend-grid, .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .intro-card, .service-card, .trend-card, .process-card {
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: white;
+    }
+    .intro-card { background: var(--cream); border: 0; }
+    .card-number { color: var(--gold); font-weight: 900; font-size: 13px; }
+    .service-card { transition: transform .2s, box-shadow .2s; }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(23,43,77,.08);
+    }
+    .service-card h3, .trend-card h3 { margin: 13px 0 9px; }
+    .service-card p, .trend-card p, .process-card p { color: var(--muted); font-size: 14px; }
+    .tag {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 5px;
+      background: #edf1fa;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .cream-section { background: var(--cream); }
+    .process-card { background: transparent; }
+    .process-card .step {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      font-weight: 800;
+    }
+    .statement {
+      padding: 38px;
+      border-left: 4px solid var(--gold);
+      background: white;
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .review-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+      gap: 35px;
+      align-items: start;
+    }
+    .review-form {
+      position: sticky;
+      top: 100px;
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--cream);
+    }
+    .review-form label, .admin-panel label {
+      display: block;
+      margin: 14px 0 6px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .review-form input, .review-form textarea,
+    .admin-panel input, .admin-panel textarea {
+      width: 100%;
+      border: 1px solid #d9dee8;
+      border-radius: 7px;
+      padding: 12px;
+      background: white;
+      color: var(--text);
+    }
+    textarea { resize: vertical; min-height: 110px; }
+    .review-form button { width: 100%; margin-top: 15px; }
+    .stars-input {
+      display: flex;
+      gap: 6px;
+      margin: 5px 0;
+    }
+    .star-button {
+      border: 0;
+      background: transparent;
+      color: #c7ccd5;
+      font-size: 30px;
+      padding: 0 2px;
+    }
+    .star-button.active { color: var(--gold); }
+    .review-summary {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .review-average { font-size: 36px; font-weight: 900; color: var(--navy); }
+    .review-list { display: grid; gap: 14px; }
+    .review-item {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+    }
+    .review-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .review-name { font-weight: 800; }
+    .review-date { color: var(--muted); font-size: 12px; }
+    .review-stars { color: var(--gold); letter-spacing: 2px; }
+    .review-content { margin: 13px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .review-management { display: flex; gap: 8px; margin-top: 15px; }
+    .small-button {
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+    .small-button.danger { color: #b42318; }
+    .notice { color: var(--muted); font-size: 12px; margin-top: 12px; }
+    .status-message { margin-top: 12px; font-size: 13px; }
+    .empty-state {
+      padding: 30px;
+      text-align: center;
+      border: 1px dashed #cbd2df;
+      border-radius: 12px;
+      color: var(--muted);
+    }
+    .admin-panel {
+      display: none;
+      margin-top: 25px;
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #f5f7fb;
+    }
+    .admin-panel.visible { display: block; }
+    .admin-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .admin-tools button { border: 0; border-radius: 6px; padding: 10px 13px; background: var(--navy); color: white; }
+    .admin-tools .secondary { background: #e5e9f1; color: var(--navy); }
+    .footer {
+      padding: 35px 0;
+      background: var(--navy);
+      color: #dbe3f1;
+      font-size: 13px;
+    }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer strong { color: white; }
+
+    @media (max-width: 800px) {
+      .nav { align-items: flex-start; padding: 15px 0; flex-wrap: wrap; }
+      .nav-links { order: 3; width: 100%; overflow-x: auto; gap: 17px; padding: 7px 0; }
+      .nav-cta { padding: 9px 12px; }
+      .hero { padding: 75px 0; }
+      .section { padding: 65px 0; }
+      .intro-grid, .service-grid, .trend-grid, .process-grid { grid-template-columns: 1fr; }
+      .review-layout { grid-template-columns: 1fr; }
+      .review-form { position: static; }
+      .statement { padding: 25px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="SHERPA 홈">
+        <span class="brand-mark">S</span>
+        <span>SHERPA</span>
+      </a>
+      <nav class="nav-links" aria-label="주요 메뉴">
+        <a href="#about">소개</a>
+        <a href="#services">컨설팅</a>
+        <a href="#process">진행 과정</a>
+        <a href="#trends">2026 트렌드</a>
+        <a href="#reviews">후기</a>
+      </nav>
+      <a class="nav-cta" href="#reviews">후기 남기기</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div class="eyebrow">Business Insight · Future Strategy</div>
+        <h1 id="heroTitle">다음 가능성을 찾는<br>기업의 셰르파</h1>
+        <p id="heroDescription">
+          변화하는 시장을 읽고, 기업이 나아갈 방향을 함께 설계합니다.
+          셰르파는 시장 분석과 트렌드 리서치를 바탕으로 더 나은 선택을 돕습니다.
+        </p>
+        <a class="primary-button" href="#services">컨설팅 살펴보기 ↗</a>
+        <div class="hero-note">RESEARCH · STRATEGY · GROWTH</div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">About SHERPA</div>
+          <h2>답을 대신 정하기보다,<br>방향을 찾는 과정을 함께합니다.</h2>
+          <p>셰르파는 기업이 마주한 문제를 분석하고, 변화의 흐름 속에서 실행 가능한 선택지를 찾도록 돕는 비즈니스 컨설팅 브랜드입니다.</p>
+        </div>
+        <div class="intro-grid">
+          <article class="intro-card">
+            <div class="card-number">01 / ANALYZE</div>
+            <h3>시장 이해</h3>
+            <p>시장과 소비자의 변화를 관찰하고 의사결정에 필요한 정보를 정리합니다.</p>
+          </article>
+          <article class="intro-card">
+            <div class="card-number">02 / DISCOVER</div>
+            <h3>기회 발견</h3>
+            <p>산업 트렌드와 기업의 상황을 연결해 새로운 가능성을 탐색합니다.</p>
+          </article>
+          <article class="intro-card">
+            <div class="card-number">03 / PLAN</div>
+            <h3>전략 설계</h3>
+            <p>분석 결과를 구체적인 방향과 실행 계획으로 발전시킵니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cream-section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What We Do</div>
+          <h2>기업의 상황에 맞는<br>세 가지 탐색과 설계</h2>
+          <p>기업의 현재 상황과 목표에 맞춰 분석 범위와 결과물을 구성합니다.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="tag">BUSINESS</span>
+            <h3>기업 방향성 컨설팅</h3>
+            <p>기업이 가진 자원과 목표, 시장 환경을 함께 살펴보고 미래 방향을 구체화합니다.</p>
+          </article>
+          <article class="service-card">
+            <span class="tag">STARTUP</span>
+            <h3>맞춤형 창업 컨설팅</h3>
+            <p>아이디어 검토부터 고객 분석, 경쟁 환경 파악, 사업 모델 구상까지 창업 준비를 지원합니다.</p>
+          </article>
+          <article class="service-card">
+            <span class="tag">RESEARCH</span>
+            <h3>ESG · 시장 트렌드 분석</h3>
+            <p>산업 동향과 지속가능성 이슈를 조사해 사업 기회와 고려해야 할 위험을 정리합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Our Process</div>
+          <h2>분석에서 실행 방향까지</h2>
+          <p>상황을 충분히 이해한 뒤, 목적에 맞는 결과물을 설계합니다.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-card">
+            <div class="step">1</div>
+            <h3>상황 파악</h3>
+            <p>목표와 고민, 현재 조건을 확인해 핵심 과제를 정의합니다.</p>
+          </article>
+          <article class="process-card">
+            <div class="step">2</div>
+            <h3>자료 조사 · 분석</h3>
+            <p>관련 시장과 산업 자료를 검토하고 주요 시사점을 도출합니다.</p>
+          </article>
+          <article class="process-card">
+            <div class="step">3</div>
+            <h3>전략 제안</h3>
+            <p>분석 내용을 바탕으로 실행 방향과 우선순위를 제안합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cream-section" id="trends">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Trend Report · 2026</div>
+          <h2>변화의 흐름에서<br>다음 기회를 살펴봅니다.</h2>
+          <p>아래는 탐색할 산업 분야를 소개하는 영역입니다. 실제 보고서에는 최신 자료와 출처를 바탕으로 분석 내용을 보완해야 합니다.</p>
+        </div>
+        <div class="trend-grid">
+          <article class="trend-card">
+            <div class="card-number">TREND 01</div>
+            <h3>바이오 · 에너지</h3>
+            <p>생명과학, 에너지 전환, 지속가능한 기술이 기업과 시장에 미치는 변화를 살펴봅니다.</p>
+          </article>
+          <article class="trend-card">
+            <div class="card-number">TREND 02</div>
+            <h3>미디어 · 공연</h3>
+            <p>콘텐츠 소비 방식, 공연 경험, 문화산업의 새로운 비즈니스 기회를 탐색합니다.</p>
+          </article>
+          <article class="trend-card">
+            <div class="card-number">TREND 03</div>
+            <h3>로봇 · 자동화</h3>
+            <p>자동화 기술의 적용 분야와 산업 현장의 변화, 도입 시 고려할 요소를 분석합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Client Reviews</div>
+          <h2>함께한 경험을 들려주세요.</h2>
+          <p>등록된 후기는 데이터베이스에 저장되며, 사이트를 방문하는 다른 사람에게도 표시됩니다.</p>
+        </div>
+
+        <div class="review-layout">
+          <form class="review-form" id="reviewForm">
+            <h3 id="reviewFormTitle">후기 작성하기</h3>
+            <label for="reviewName">이름 또는 닉네임</label>
+            <input id="reviewName" maxlength="40" required placeholder="표시할 이름을 입력하세요">
+
+            <label>별점</label>
+            <div class="stars-input" id="starsInput" aria-label="별점 선택">
+              <button class="star-button active" type="button" data-rating="1" aria-label="1점">★</button>
+              <button class="star-button active" type="button" data-rating="2" aria-label="2점">★</button>
+              <button class="star-button active" type="button" data-rating="3" aria-label="3점">★</button>
+              <button class="star-button active" type="button" data-rating="4" aria-label="4점">★</button>
+              <button class="star-button active" type="button" data-rating="5" aria-label="5점">★</button>
+            </div>
+
+            <label for="reviewContent">후기 내용</label>
+            <textarea id="reviewContent" maxlength="1500" required placeholder="서비스를 경험한 소감을 작성해 주세요."></textarea>
+
+            <button class="primary-button" id="submitReview" type="submit">후기 등록하기</button>
+            <button class="small-button" id="cancelEdit" type="button" hidden>수정 취소</button>
+            <p class="notice">이름과 후기는 공개적으로 표시됩니다. 개인정보나 민감한 정보는 작성하지 마세요.</p>
+            <p class="status-message" id="reviewStatus" role="status"></p>
+          </form>
+
+          <div>
+            <div class="review-summary">
+              <div class="review-average" id="reviewAverage">—</div>
+              <div>
+                <div class="review-stars" id="averageStars">☆☆☆☆☆</div>
+                <div class="notice" id="reviewCount">후기를 불러오는 중...</div>
+              </div>
+            </div>
+
+            <div class="review-list" id="reviewList">
+              <div class="empty-state">데이터베이스 연결을 확인하고 있습니다.</div>
+            </div>
+
+            <div class="admin-panel" id="adminPanel">
+              <h3>관리자 설정</h3>
+              <p class="notice">메인 화면의 제목과 소개 문구를 수정할 수 있습니다.</p>
+              <label for="editHeroTitle">메인 제목</label>
+              <textarea id="editHeroTitle" rows="2"></textarea>
+              <label for="editHeroDescription">메인 소개 문구</label>
+              <textarea id="editHeroDescription" rows="3"></textarea>
+              <div class="admin-tools">
+                <button id="saveDesign" type="button">디자인 문구 저장</button>
+                <button id="adminLogout" class="secondary" type="button">관리자 로그아웃</button>
+              </div>
+              <p class="status-message" id="adminStatus" role="status"></p>
+            </div>
+
+            <div style="margin-top:18px;text-align:right">
+              <button class="small-button" id="adminLoginButton" type="button">관리자 로그인</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cream-section">
+      <div class="container">
+        <div class="statement">
+          더 나은 방향은 더 나은 질문에서 시작됩니다.<br>
+          <span style="font-size:15px;font-weight:500;color:#6b778c">SHERPA — Find the Next Direction.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div><strong>SHERPA 셰르파</strong><br>Business Insight · Future Strategy</div>
+      <div>시장 분석과 전략 설계를 통한 다음 가능성 탐색</div>
+      <div>© <span id="year"></span> SHERPA</div>
+    </div>
+  </footer>
+
+  <!-- Firebase 연결 및 후기 기능 -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+    import {
+      getFirestore, collection, addDoc, onSnapshot, query, orderBy,
+      doc, updateDoc, deleteDoc, getDoc, setDoc, serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+    import {
+      getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut
+    } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+    // 1) Firebase 콘솔의 웹 앱 설정값으로 아래 항목을 교체하세요.
+    const firebaseConfig = {
+      apiKey: "AIzaSyACT9QFwzDxBFTRKzjcgpLkv9RrKFtUyYM",      
+      authDomain: "sherpa-b8327.firebaseapp.com",
+      projectId: "sherpa-b8327",
+      storageBucket: "sherpa-b8327.firebasestorage.app",
+      messagingSenderId: "580424877646"",
+      appId: "1:580424877646:web:4db1ce10172ca13889251f"
+    };
+
+    // 2) Firebase Authentication에 등록한 관리자 이메일을 입력하세요.
+    const ADMIN_EMAIL = "stellapico3737@gmail.com";
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const reviewsRef = collection(db, "reviews");
+    const settingsRef = doc(db, "siteSettings", "main");
+
+    const reviewForm = document.getElementById("reviewForm");
+    const reviewName = document.getElementById("reviewName");
+    const reviewContent = document.getElementById("reviewContent");
+    const reviewList = document.getElementById("reviewList");
+    const reviewStatus = document.getElementById("reviewStatus");
+    const submitReview = document.getElementById("submitReview");
+    const cancelEdit = document.getElementById("cancelEdit");
+    const adminPanel = document.getElementById("adminPanel");
+    const adminLoginButton = document.getElementById("adminLoginButton");
+    const adminStatus = document.getElementById("adminStatus");
+
+    let selectedRating = 5;
+    let editingReviewId = null;
+    let isAdmin = false;
+    let currentReviews = [];
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // 별점 버튼 선택
+    function setRating(rating) {
+      selectedRating = rating;
+      document.querySelectorAll(".star-button").forEach((button) => {
+        button.classList.toggle("active", Number(button.dataset.rating) <= rating);
+      });
+    }
+
+    document.querySelectorAll(".star-button").forEach((button) => {
+      button.addEventListener("click", () => setRating(Number(button.dataset.rating)));
+    });
+    setRating(5);
+
+    // HTML 문자열 대신 텍스트로 삽입해 입력 내용이 코드로 실행되지 않도록 함
+    function createTextElement(tag, className, text) {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      element.textContent = text ?? "";
+      return element;
+    }
+
+    function formatDate(value) {
+      if (!value) return "방금 전";
+      const date = typeof value.toDate === "function" ? value.toDate() : new Date(value);
+      if (Number.isNaN(date.getTime())) return "";
+      return new Intl.DateTimeFormat("ko-KR", {
+        year: "numeric", month: "2-digit", day: "2-digit"
+      }).format(date);
+    }
+
+    function renderReviews() {
+      reviewList.replaceChildren();
+
+      const count = currentReviews.length;
+      document.getElementById("reviewCount").textContent = `총 ${count}개의 후기`;
+
+      if (count === 0) {
+        document.getElementById("reviewAverage").textContent = "—";
+        document.getElementById("averageStars").textContent = "☆☆☆☆☆";
+        reviewList.append(createTextElement("div", "empty-state", "첫 번째 후기를 남겨 주세요."));
+        return;
+      }
+
+      const average = currentReviews.reduce((sum, item) => sum + Number(item.rating || 0), 0) / count;
+      document.getElementById("reviewAverage").textContent = average.toFixed(1);
+      document.getElementById("averageStars").textContent =
+        "★".repeat(Math.round(average)) + "☆".repeat(5 - Math.round(average));
+
+      currentReviews.forEach((item) => {
+        const card = document.createElement("article");
+        card.className = "review-item";
+
+        const top = document.createElement("div");
+        top.className = "review-top";
+
+        const identity = document.createElement("div");
+        identity.append(createTextElement("div", "review-name", item.name || "익명"));
+        identity.append(createTextElement("div", "review-date", formatDate(item.createdAt)));
+
+        const stars = createTextElement("div", "review-stars", "★".repeat(Number(item.rating || 0)) + "☆".repeat(5 - Number(item.rating || 0)));
+        stars.setAttribute("aria-label", `${item.rating}점`);
+
+        top.append(identity, stars);
+        card.append(top);
+        card.append(createTextElement("p", "review-content", item.content || ""));
+
+        // 수정 및 삭제 버튼은 관리자 로그인 상태에서만 표시
+        if (isAdmin) {
+          const tools = document.createElement("div");
+          tools.className = "review-management";
+
+          const editButton = createTextElement("button", "small-button", "수정");
+          editButton.type = "button";
+          editButton.addEventListener("click", () => startEdit(item));
+
+          const deleteButton = createTextElement("button", "small-button danger", "삭제");
+          deleteButton.type = "button";
+          deleteButton.addEventListener("click", () => removeReview(item.id));
+
+          tools.append(editButton, deleteButton);
+          card.append(tools);
+        }
+
+        reviewList.append(card);
+      });
+    }
+
+    function startEdit(item) {
+      editingReviewId = item.id;
+      reviewName.value = item.name || "";
+      reviewContent.value = item.content || "";
+      setRating(Number(item.rating || 5));
+      document.getElementById("reviewFormTitle").textContent = "후기 수정하기";
+      submitReview.textContent = "수정 내용 저장";
+      cancelEdit.hidden = false;
+      reviewForm.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function resetReviewForm() {
+      editingReviewId = null;
+      reviewForm.reset();
+      setRating(5);
+      document.getElementById("reviewFormTitle").textContent = "후기 작성하기";
+      submitReview.textContent = "후기 등록하기";
+      cancelEdit.hidden = true;
+    }
+
+    cancelEdit.addEventListener("click", resetReviewForm);
+
+    // 방문자는 후기 등록, 관리자는 기존 후기 수정
+    reviewForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const name = reviewName.value.trim();
+      const content = reviewContent.value.trim();
+
+      if (!name || !content) {
+        reviewStatus.textContent = "이름과 후기 내용을 모두 입력해 주세요.";
+        return;
+      }
+
+      if (name.length > 40 || content.length > 1500) {
+        reviewStatus.textContent = "입력 가능한 글자 수를 확인해 주세요.";
+        return;
+      }
+
+      if (editingReviewId && !isAdmin) {
+        reviewStatus.textContent = "후기를 수정하려면 관리자 로그인이 필요합니다.";
+        return;
+      }
+
+      submitReview.disabled = true;
+      reviewStatus.textContent = "저장 중입니다...";
+
+      try {
+        if (editingReviewId) {
+          await updateDoc(doc(db, "reviews", editingReviewId), {
+            name,
+            content,
+            rating: selectedRating,
+            updatedAt: serverTimestamp()
+          });
+          reviewStatus.textContent = "후기가 수정되었습니다.";
+        } else {
+          await addDoc(reviewsRef, {
+            name,
+            content,
+            rating: selectedRating,
+            createdAt: serverTimestamp()
+          });
+          reviewStatus.textContent = "후기가 등록되었습니다. 다른 방문자에게도 표시됩니다.";
+        }
+
+        resetReviewForm();
+      } catch (error) {
+        console.error(error);
+        reviewStatus.textContent = "저장하지 못했습니다. Firebase 설정과 보안 규칙을 확인해 주세요.";
+      } finally {
+        submitReview.disabled = false;
+      }
+    });
+
+    async function removeReview(id) {
+      if (!isAdmin) return;
+      if (!confirm("이 후기를 삭제할까요?")) return;
+
+      try {
+        await deleteDoc(doc(db, "reviews", id));
+        adminStatus.textContent = "후기가 삭제되었습니다.";
+      } catch (error) {
+        console.error(error);
+        adminStatus.textContent = "삭제에 실패했습니다. 관리자 권한과 보안 규칙을 확인해 주세요.";
+      }
+    }
+
+    // 관리자가 로그인하면 편집 도구를 표시
+    adminLoginButton.addEventListener("click", async () => {
+      if (auth.currentUser) {
+        adminPanel.classList.toggle("visible");
+        return;
+      }
+
+      const email = prompt("관리자 이메일을 입력하세요.");
+      if (email === null) return;
+      const password = prompt("관리자 비밀번호를 입력하세요.");
+      if (password === null) return;
+
+      try {
+        await signInWithEmailAndPassword(auth, email.trim(), password);
+      } catch (error) {
+        console.error(error);
+        alert("로그인에 실패했습니다. 관리자 계정과 비밀번호를 확인해 주세요.");
+      }
+    });
+
+    onAuthStateChanged(auth, (user) => {
+      isAdmin = Boolean(user && user.email === ADMIN_EMAIL);
+      adminPanel.classList.toggle("visible", isAdmin);
+      adminLoginButton.textContent = isAdmin ? "관리자 설정 열기/닫기" : "관리자 로그인";
+
+      if (user && !isAdmin) {
+        signOut(auth);
+        alert("이 계정에는 관리자 권한이 없습니다.");
+      }
+
+      renderReviews();
+    });
+
+    document.getElementById("adminLogout").addEventListener("click", async () => {
+      await signOut(auth);
+      adminStatus.textContent = "로그아웃되었습니다.";
+    });
+
+    // 메인 문구는 데이터베이스에 저장해 모든 방문자에게 동일하게 표시
+    async function loadSiteSettings() {
+      try {
+        const snapshot = await getDoc(settingsRef);
+        if (snapshot.exists()) applySiteSettings(snapshot.data());
+      } catch (error) {
+        console.error("사이트 설정 읽기 실패:", error);
+      }
+    }
+
+    function applySiteSettings(settings) {
+      if (typeof settings.heroTitle === "string") {
+        document.getElementById("heroTitle").textContent = settings.heroTitle;
+      }
+      if (typeof settings.heroDescription === "string") {
+        document.getElementById("heroDescription").textContent = settings.heroDescription;
+      }
+    }
+
+    document.getElementById("saveDesign").addEventListener("click", async () => {
+      if (!isAdmin) return;
+
+      const heroTitle = document.getElementById("editHeroTitle").value.trim();
+      const heroDescription = document.getElementById("editHeroDescription").value.trim();
+
+      if (!heroTitle || !heroDescription) {
+        adminStatus.textContent = "제목과 소개 문구를 모두 입력해 주세요.";
+        return;
+      }
+
+      try {
+        await setDoc(settingsRef, { heroTitle, heroDescription });
+        applySiteSettings({ heroTitle, heroDescription });
+        adminStatus.textContent = "변경 사항이 저장되었습니다.";
+      } catch (error) {
+        console.error(error);
+        adminStatus.textContent = "저장에 실패했습니다. 관리자 권한과 보안 규칙을 확인해 주세요.";
+      }
+    });
+
+    // 실시간 구독: 한 사람이 후기를 등록하면 다른 방문자의 화면도 갱신됨
+    const reviewQuery = query(reviewsRef, orderBy("createdAt", "desc"));
+    onSnapshot(reviewQuery, (snapshot) => {
+      currentReviews = snapshot.docs.map((item) => ({
+        id: item.id,
+        ...item.data()
+      }));
+      renderReviews();
+    }, (error) => {
+      console.error("후기 불러오기 실패:", error);
+      reviewList.replaceChildren();
+      reviewList.append(createTextElement(
+        "div",
+        "empty-state",
+        "후기를 불러오지 못했습니다. Firebase 설정과 Firestore 보안 규칙을 확인해 주세요."
+      ));
+      document.getElementById("reviewCount").textContent = "데이터 연결 오류";
+    });
+
+    loadSiteSettings();
+  </script>
+</body>
+</html>
