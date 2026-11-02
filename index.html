@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHERPA | 셰르파</title>
+  <meta name="description" content="당신의 아이디어가 가능성이 되는 곳, 셰르파 창업 컨설팅">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
+
+    :root {
+      --navy: #102b4e;
+      --blue: #2363a5;
+      --sky: #eaf3fc;
+      --pale: #f5f8fc;
+      --text: #192b40;
+      --muted: #718096;
+      --line: #e2eaf2;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text);
+      background: white;
+      line-height: 1.7;
+    }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* 헤더 */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 23px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: 1px;
+    }
+
+    .logo img {
+      width: 65px;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #43566c;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-cta {
+      padding: 10px 19px;
+      border-radius: 8px;
+      background: var(--navy);
+      color: white !important;
+    }
+
+    .menu-button {
+      display: none;
+      border: 0;
+      background: none;
+      color: var(--navy);
+      font-size: 25px;
+    }
+
+    /* 공통 */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.35;
+      margin-bottom: 17px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 650px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .center .section-description {
+      margin: auto;
+    }
+
+    .primary-button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 8px;
+      padding: 14px 24px;
+      background: var(--blue);
+      color: white;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .primary-button:hover {
+      background: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    .secondary-button {
+      display: inline-flex;
+      justify-content: center;
+      padding: 13px 23px;
+      border: 1px solid #c8d7e7;
+      border-radius: 8px;
+      color: var(--navy);
+      font-weight: 700;
+      background: white;
+    }
+
+    /* 메인 */
+
+    .hero {
+      padding: 105px 0 110px;
+      background:
+        radial-gradient(circle at 85% 20%, #dceafa 0, transparent 31%),
+        linear-gradient(120deg, #f7faff, #eaf3fc);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      color: var(--blue);
+      background: white;
+      border: 1px solid #d7e6f5;
+      padding: 7px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 65px);
+      line-height: 1.25;
+      letter-spacing: -2px;
+      color: var(--navy);
+      font-weight: 900;
+      margin-bottom: 23px;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+    }
+
+    .hero p {
+      color: #60748a;
+      font-size: 17px;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-bottom {
+      display: flex;
+      gap: 35px;
+      margin-top: 65px;
+      padding-top: 25px;
+      border-top: 1px solid #d7e3ef;
+    }
+
+    .hero-bottom strong {
+      display: block;
+      color: var(--navy);
+      font-size: 17px;
+    }
+
+    .hero-bottom span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* 소개 */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .about-visual {
+      min-height: 330px;
+      background: linear-gradient(140deg, #153c68, #347bb8);
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      padding: 35px;
+      text-align: center;
+    }
+
+    .about-visual img {
+      width: min(250px, 90%);
+      border-radius: 12px;
+      margin-bottom: 18px;
+    }
+
+    .about-visual strong {
+      font-size: 25px;
+      letter-spacing: 3px;
+    }
+
+    .about-visual span {
+      font-size: 13px;
+      opacity: .8;
+      margin-top: 5px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .about-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .about-point {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .check {
+      display: inline-grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      color: var(--blue);
+      background: var(--sky);
+      flex-shrink: 0;
+    }
+
+    /* 서비스 */
+
+    .services {
+      background: var(--pale);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 45px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      transition: .2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(20,55,90,.08);
+    }
+
+    .service-number {
+      color: #8ab4df;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .service-card h3 {
+      color: var(--navy);
+      font-size: 21px;
+      margin: 12px 0;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* 진행 과정 */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 45px;
+    }
+
+    .process-card {
+      padding: 25px 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .process-card .number {
+      color: var(--blue);
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .process-card h3 {
+      color: var(--navy);
+      margin: 10px 0 5px;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* 신청 */
+
+    .application {
+      background: var(--pale);
+    }
+
+    .form-wrap {
+      max-width: 760px;
+      margin: 40px auto 0;
+      background: white;
+      padding: 40px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      display: block;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #dce5ef;
+      border-radius: 8px;
+      outline: none;
+      background: white;
+      color: var(--text);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px #2363a51a;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-wrap .primary-button {
+      width: 100%;
+    }
+
+    .form-status {
+      margin-top: 14px;
+      font-size: 14px;
+      text-align: center;
+      color: var(--blue);
+    }
+
+    /* 후기 */
+
+    .review-summary {
+      margin: 35px 0 25px;
+      padding: 22px;
+      background: var(--sky);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .review-summary strong {
+      color: var(--navy);
+      font-size: 30px;
+    }
+
+    .stars {
+      color: #e5a72d;
+      letter-spacing: 2px;
+    }
+
+    .review-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .review-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 23px;
+      background: white;
+    }
+
+    .review-card h3 {
+      color: var(--navy);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .review-card p {
+      color: #65758a;
+      font-size: 14px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .review-date {
+      color: #9aa8b7;
+      font-size: 11px;
+      margin-top: 13px;
+    }
+
+    .review-form {
+      max-width: 650px;
+      margin: 40px auto 0;
+      padding: 30px;
+      background: var(--pale);
+      border-radius: 14px;
+    }
+
+    .review-form h3 {
+      color: var(--navy);
+      margin-bottom: 18px;
+    }
+
+    .review-form input,
+    .review-form textarea,
+    .review-form select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+    }
+
+    .review-form textarea {
+      min-height: 90px;
+    }
+
+    /* 하단 배너 */
+
+    .cta {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 75px 20px;
+    }
+
+    .cta h2 {
+      font-size: 32px;
+      margin-bottom: 13px;
+    }
+
+    .cta p {
+      color: #c4d5e7;
+      margin-bottom: 25px;
+    }
+
+    .cta .primary-button {
+      background: white;
+      color: var(--navy);
+    }
+
+    /* 관리자 */
+
+    .admin-section {
+      background: #f1f5f9;
+    }
+
+    .admin-box {
+      max-width: 850px;
+      margin: 30px auto 0;
+      padding: 30px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .admin-box h3 {
+      color: var(--navy);
+      margin: 20px 0 12px;
+    }
+
+    .admin-item {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .admin-item button {
+      margin: 10px 6px 0 0;
+      padding: 7px 12px;
+      border: 0;
+      border-radius: 6px;
+      background: var(--sky);
+      color: var(--navy);
+    }
+
+    .admin-item button.delete {
+      background: #fff0f0;
+      color: #b33a3a;
+    }
+
+    .admin-login {
+      max-width: 420px;
+      margin: auto;
+    }
+
+    .admin-login input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      margin: 7px 0;
+    }
+
+    .admin-hidden {
+      display: none;
+    }
+
+    /* 푸터 */
+
+    footer {
+      background: #0b2039;
+      color: #b9c8d8;
+      padding: 35px 0;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      color: white;
+      font-weight: 900;
+      font-size: 19px;
+    }
+
+    /* 모바일 */
+
+    @media (max-width: 760px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: white;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 17px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .hero {
+        padding: 75px 0;
+      }
+
+      .hero-bottom {
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .about-grid,
+      .service-grid,
+      .review-list {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        gap: 35px;
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .form-wrap {
+        padding: 23px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 헤더 -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">
+        <img src="./로고.jpg" alt="셰르파 로고">
+        <span>SHERPA</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">ABOUT</a>
+        <a href="#services">SERVICE</a>
+        <a href="#process">PROCESS</a>
+        <a href="#application">CONSULTING</a>
+        <a href="#reviews">REVIEW</a>
+        <a href="#admin" class="nav-cta">관리자</a>
+      </nav>
+
+      <button class="menu-button" id="menuButton" aria-label="메뉴 열기">☰</button>
+    </div>
+  </header>
+
+  <!-- 메인 -->
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-tag">YOUR IDEA, OUR DIRECTION</span>
+
+          <h1 id="heroTitle">
+            당신의 아이디어가<br>
+            <span>가능성</span>이 되는 곳
+          </h1>
+
+          <p id="heroDescription">
+            막연한 아이디어에서 구체적인 실행까지.<br>
+            셰르파가 당신의 새로운 도전을 함께 설계합니다.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#application" class="primary-button">컨설팅 신청하기 →</a>
+            <a href="#services" class="secondary-button">서비스 알아보기</a>
+          </div>
+
+          <div class="hero-bottom">
+            <div>
+              <strong>IDEA</strong>
+              <span>가능성을 발견하다</span>
+            </div>
+            <div>
+              <strong>STRATEGY</strong>
+              <span>방향을 설계하다</span>
+            </div>
+            <div>
+              <strong>GROWTH</strong>
+              <span>성장을 함께하다</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 소개 -->
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-visual">
+          <img src="./로고.jpg" alt="SHERPA 공식 로고">
+          <strong>SHERPA</strong>
+          <span>Find Your Way, Build Your Future.</span>
+        </div>
+
+        <div class="about-text">
+          <div class="section-label">ABOUT SHERPA</div>
+          <h2 class="section-title">
+            새로운 도전의 길,<br>
+            셰르파가 함께합니다.
+          </h2>
+
+          <p>
+            셰르파는 창업과 새로운 프로젝트를 꿈꾸는 사람들의
+            아이디어를 구체화하고, 실현 가능한 방향을 찾도록 돕는
+            컨설팅 플랫폼입니다.
+          </p>
+
+          <p>
+            정답을 대신 제시하기보다 각자의 목표와 상황에 맞는
+            방향을 함께 고민합니다.
+          </p>
+
+          <div class="about-points">
+            <div class="about-point">
+              <span class="check">✓</span>
+              아이디어의 구체화와 발전
+            </div>
+            <div class="about-point">
+              <span class="check">✓</span>
+              현실적인 전략과 방향 제시
+            </div>
+            <div class="about-point">
+              <span class="check">✓</span>
+              개인의 가능성을 고려한 맞춤형 컨설팅
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 서비스 -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="center">
+          <div class="section-label">OUR SERVICE</div>
+          <h2 class="section-title">셰르파의 컨설팅 분야</h2>
+          <p class="section-description">
+            다양한 관심 분야와 아이디어를 구체적인 계획으로 발전시킵니다.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <span class="service-number">SERVICE 01</span>
+            <h3>창업 아이디어 컨설팅</h3>
+            <p>
+              창업 아이템의 핵심 가치를 찾고, 아이디어를
+              실현 가능한 사업 모델로 구체화합니다.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">SERVICE 02</span>
+            <h3>사업 분석 및 전략 수립</h3>
+            <p>
+              시장과 소비자 특성을 분석하고 사업의 방향성과
+              차별화 전략을 함께 고민합니다.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">SERVICE 03</span>
+            <h3>글로벌 언어·마케팅 컨설팅</h3>
+            <p>
+              해외 진출을 고려하는 아이디어를 위해
+              국가별 특성과 언어를 고려한 전략을 제안합니다.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">SERVICE 04</span>
+            <h3>문화·예술 프로젝트 컨설팅</h3>
+            <p>
+              공연과 문화 콘텐츠의 기획 방향을 설정하고
+              프로젝트의 구성과 홍보 전략을 함께 설계합니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 진행 과정 -->
+    <section id="process">
+      <div class="container">
+        <div class="center">
+          <div class="section-label">HOW WE WORK</div>
+          <h2 class="section-title">컨설팅 진행 과정</h2>
+          <p class="section-description">
+            아이디어를 이해하는 것부터 실행 방향을 정하는 것까지.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="number">01</div>
+            <h3>신청</h3>
+            <p>관심 분야와 아이디어 전달</p>
+          </div>
+
+          <div class="process-card">
+            <div class="number">02</div>
+            <h3>분석</h3>
+            <p>목표와 상황에 대한 검토</p>
+          </div>
+
+          <div class="process-card">
+            <div class="number">03</div>
+            <h3>컨설팅</h3>
+            <p>맞춤형 방향과 전략 제안</p>
+          </div>
+
+          <div class="process-card">
+            <div class="number">04</div>
+            <h3>발전</h3>
+            <p>실행 계획 구체화</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 컨설팅 신청 -->
+    <section id="application" class="application">
+      <div class="container">
+        <div class="center">
+          <div class="section-label">CONSULTING APPLICATION</div>
+          <h2 class="section-title">당신의 아이디어를 들려주세요.</h2>
+          <p class="section-description">
+            간단한 신청서를 작성하면 셰르파가 내용을 확인합니다.
+          </p>
+        </div>
+
+        <form class="form-wrap" id="consultingForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="applicantName">이름 *</label>
+              <input id="applicantName" required maxlength="30"
+                placeholder="이름을 입력하세요">
+            </div>
+
+            <div class="form-group">
+              <label for="applicantAge">나이 *</label>
+              <input id="applicantAge" required type="number"
+                min="1" max="120" placeholder="나이를 입력하세요">
+            </div>
+
+            <div class="form-group full">
+              <label for="startupReason">창업 또는 프로젝트를 시작하려는 이유 *</label>
+              <textarea id="startupReason" required maxlength="2000"
+                placeholder="시작하게 된 계기와 목표를 적어주세요."></textarea>
+            </div>
+
+            <div class="form-group full">
+              <label for="businessField">관심 분야 *</label>
+              <select id="businessField" required>
+                <option value="">관심 분야를 선택하세요</option>
+                <option>문화·예술</option>
+                <option>문학</option>
+                <option>음악</option>
+                <option>공연·연극</option>
+                <option>광고·마케팅</option>
+                <option>생활용품</option>
+                <option>첨단 인프라</option>
+                <option>글로벌 비즈니스</option>
+                <option>기타</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label for="businessIdea">구체적인 아이디어 *</label>
+              <textarea id="businessIdea" required maxlength="3000"
+                placeholder="생각하고 있는 사업 또는 프로젝트를 설명해주세요."></textarea>
+            </div>
+          </div>
+
+          <button class="primary-button" id="applicationSubmit" type="submit">
+            컨설팅 신청하기
+          </button>
+
+          <p class="form-status" id="applicationStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- 후기 -->
+    <section id="reviews">
+      <div class="container">
+        <div class="center">
+          <div class="section-label">CLIENT REVIEW</div>
+          <h2 class="section-title">셰르파와 함께한 이야기</h2>
+          <p class="section-description">
+            컨설팅을 경험한 사람들의 솔직한 후기를 확인해보세요.
+          </p>
+        </div>
+
+        <div class="review-summary">
+          <strong id="reviewCount">0</strong>
+          <div class="stars">★★★★★</div>
+          <span>등록된 후기</span>
+        </div>
+
+        <div class="review-list" id="reviewList">
+          <p>후기를 불러오는 중입니다.</p>
+        </div>
+
+        <form class="review-form" id="reviewForm">
+          <h3>후기 작성하기</h3>
+
+          <input id="reviewName" required maxlength="30"
+            placeholder="이름 또는 닉네임">
+
+          <select id="reviewRating" required>
+            <option value="5">★★★★★ (5점)</option>
+            <option value="4">★★★★☆ (4점)</option>
+            <option value="3">★★★☆☆ (3점)</option>
+            <option value="2">★★☆☆☆ (2점)</option>
+            <option value="1">★☆☆☆☆ (1점)</option>
+          </select>
+
+          <textarea id="reviewContent" required maxlength="1000"
+            placeholder="셰르파 컨설팅에 대한 후기를 남겨주세요."></textarea>
+
+          <button class="primary-button" id="submitReview" type="submit">
+            후기 등록하기
+          </button>
+
+          <p class="form-status" id="reviewStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- 하단 배너 -->
+    <section class="cta">
+      <h2>당신의 가능성을 현실로.</h2>
+      <p>새로운 시작을 셰르파와 함께 설계해보세요.</p>
+      <a href="#application" class="primary-button">지금 컨설팅 신청하기 →</a>
+    </section>
+
+    <!-- 관리자 -->
+    <section id="admin" class="admin-section">
+      <div class="container">
+        <div class="center">
+          <div class="section-label">ADMINISTRATOR</div>
+          <h2 class="section-title">관리자 페이지</h2>
+          <p class="section-description">
+            관리자 계정으로 로그인하면 신청 내역과 후기를 관리할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="admin-box">
+          <div class="admin-login" id="adminLogin">
+            <h3>관리자 로그인</h3>
+            <input type="email" id="adminEmail" placeholder="관리자 이메일">
+            <input type="password" id="adminPassword" placeholder="비밀번호">
+            <button class="primary-button" id="loginButton" type="button">
+              로그인
+            </button>
+            <p class="form-status" id="adminLoginStatus"></p>
+          </div>
+
+          <div id="adminDashboard" class="admin-hidden">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+              <h3>관리자 대시보드</h3>
+              <button class="secondary-button" id="logoutButton" type="button">
+                로그아웃
+              </button>
+            </div>
+
+            <h3>홈페이지 메인 문구 수정</h3>
+            <div class="form-group">
+              <label for="editHeroTitle">메인 제목</label>
+              <input id="editHeroTitle" placeholder="메인 제목">
+            </div>
+            <div class="form-group">
+              <label for="editHeroDescription">메인 설명</label>
+              <textarea id="editHeroDescription"></textarea>
+            </div>
+            <button class="primary-button" id="saveSettingsButton" type="button">
+              문구 저장하기
+            </button>
+            <p class="form-status" id="settingsStatus"></p>
+
+            <h3>컨설팅 신청 내역</h3>
+            <div id="applicationAdminList">불러오는 중입니다.</div>
+
+            <h3>후기 관리</h3>
+            <div id="reviewAdminList">불러오는 중입니다.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">SHERPA</div>
+        <p>Find Your Way, Build Your Future.</p>
+      </div>
+      <div>
+        <p>SHERPA Consulting</p>
+        <p>아이디어에서 가능성으로, 가능성에서 실현으로.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase + 기능 -->
+  <script type="module">
+    import { initializeApp } from
+      "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      onSnapshot,
+      query,
+      orderBy,
+      serverTimestamp,
+      deleteDoc,
+      updateDoc,
+      doc,
+      getDoc,
+      setDoc
+    } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+
+    // 1. Firebase 설정
+    // Firebase 콘솔에서 본인의 apiKey를 입력하세요.
+    const firebaseConfig = {
+      apiKey: "65AjiYnFm4Tot2sVYc3TdZNfFJ32",
+      authDomain: "sherpa-b8327.firebaseapp.com",
+      projectId: "sherpa-b8327",
+      storageBucket: "sherpa-b8327.firebasestorage.app",
+      messagingSenderId: "580424877646",
+      appId: "1:580424877646:web:4db1ce10172ca13889251f"
+    };
+
+    // Firebase 관리자 UID를 입력하세요.
+    const ADMIN_UID = "65AjiYnFm4Tot2sVYc3TdZNfFJ32";
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const reviewsRef = collection(db, "reviews");
+    const applicationsRef = collection(db, "applications");
+    const settingsRef = doc(db, "settings", "homepage");
+
+    const $ = (id) => document.getElementById(id);
+
+    let currentUser = null;
+    let allReviews = [];
+    let allApplications = [];
+    let unsubscribeReviews = null;
+    let unsubscribeApplications = null;
+
+
+    // 2. 모바일 메뉴
+    $("menuButton").addEventListener("click", () => {
+      $("navLinks").classList.toggle("open");
+    });
+
+    document.querySelectorAll("#navLinks a").forEach(link => {
+      link.addEventListener("click", () => {
+        $("navLinks").classList.remove("open");
+      });
+    });
+
+
+    // 3. 컨설팅 신청
+    $("consultingForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const button = $("applicationSubmit");
+      const status = $("applicationStatus");
+
+      button.disabled = true;
+      button.textContent = "신청 중...";
+      status.textContent = "";
+
+      try {
+        await addDoc(applicationsRef, {
+          name: $("applicantName").value.trim(),
+          age: Number($("applicantAge").value),
+          reason: $("startupReason").value.trim(),
+          field: $("businessField").value,
+          idea: $("businessIdea").value.trim(),
+          createdAt: serverTimestamp(),
+          status: "접수"
+        });
+
+        $("consultingForm").reset();
+        status.textContent = "신청이 정상적으로 접수되었습니다.";
+
+      } catch (error) {
+        console.error(error);
+        status.textContent = "신청에 실패했습니다. 잠시 후 다시 시도해주세요.";
+      } finally {
+        button.disabled = false;
+        button.textContent = "컨설팅 신청하기";
+      }
+    });
+
+
+    // 4. 후기 등록
+    $("reviewForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const button = $("submitReview");
+      const status = $("reviewStatus");
+
+      button.disabled = true;
+      button.textContent = "등록 중...";
+      status.textContent = "";
+
+      try {
+        await addDoc(reviewsRef, {
+          name: $("reviewName").value.trim(),
+          rating: Number($("reviewRating").value),
+          content: $("reviewContent").value.trim(),
+          createdAt: serverTimestamp()
+        });
+
+        $("reviewForm").reset();
+        status.textContent = "후기가 등록되었습니다.";
+
+      } catch (error) {
+        console.error(error);
+        status.textContent = "후기 등록에 실패했습니다. 잠시 후 다시 시도해주세요.";
+      } finally {
+        button.disabled = false;
+        button.textContent = "후기 등록하기";
+      }
+    });
+
+
+    // 5. 후기 실시간 불러오기
+    const reviewQuery = query(reviewsRef, orderBy("createdAt", "desc"));
+
+    unsubscribeReviews = onSnapshot(reviewQuery, (snapshot) => {
+      allReviews = snapshot.docs.map(item => ({
+        id: item.id,
+        ...item.data()
+      }));
+
+      renderReviews();
+      if (currentUser && currentUser.uid === ADMIN_UID) {
+        renderAdminReviews();
+      }
+    }, (error) => {
+      console.error("후기 불러오기 오류:", error);
+      $("reviewList").textContent = "후기를 불러오지 못했습니다.";
+    });
+
+
+    function renderReviews() {
+      $("reviewCount").textContent = allReviews.length;
+
+      if (allReviews.length === 0) {
+        $("reviewList").innerHTML = "<p>아직 등록된 후기가 없습니다.</p>";
+        return;
+      }
+
+      $("reviewList").innerHTML = allReviews.map(review => {
+        const name = escapeHTML(review.name || "익명");
+        const content = escapeHTML(review.content || "");
+        const rating = Math.max(1, Math.min(5, Number(review.rating) || 5));
+        const date = review.createdAt?.toDate
+          ? review.createdAt.toDate().toLocaleDateString("ko-KR")
+          : "방금 전";
+
+        return `
+          <article class="review-card">
+            <h3>${name}</h3>
+            <div class="stars">${"★".repeat(rating)}${"☆".repeat(5-rating)}</div>
+            <p>${content}</p>
+            <div class="review-date">${date}</div>
+          </article>
+        `;
+      }).join("");
+    }
+
+
+    // HTML 삽입 시 입력한 내용이 코드로 실행되지 않도록 처리
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      })[char]);
+    }
+
+
+    // 6. 관리자 로그인
+    $("loginButton").addEventListener("click", async () => {
+      const email = $("adminEmail").value.trim();
+      const password = $("adminPassword").value;
+      const status = $("adminLoginStatus");
+
+      status.textContent = "로그인 중...";
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+      } catch (error) {
+        console.error(error);
+        status.textContent = "로그인에 실패했습니다. 계정 정보를 확인해주세요.";
+      }
+    });
+
+
+    // 로그인 상태 확인
+    onAuthStateChanged(auth, async (user) => {
+      currentUser = user;
+
+      const isAdmin = Boolean(user && user.uid === ADMIN_UID);
+
+      $("adminLogin").classList.toggle("admin-hidden", isAdmin);
+      $("adminDashboard").classList.toggle("admin-hidden", !isAdmin);
+
+      if (isAdmin) {
+        loadAdminApplications();
+        loadHomepageSettings();
+        renderAdminReviews();
+      } else {
+        if (unsubscribeApplications) {
+          unsubscribeApplications();
+          unsubscribeApplications = null;
+        }
+      }
+    });
+
+
+    // 7. 관리자 로그아웃
+    $("logoutButton").addEventListener("click", async () => {
+      await signOut(auth);
+    });
+
+
+    // 8. 관리자: 신청 내역 불러오기
+    function loadAdminApplications() {
+      if (unsubscribeApplications) unsubscribeApplications();
+
+      const applicationQuery = query(
+        applicationsRef,
+        orderBy("createdAt", "desc")
+      );
+
+      unsubscribeApplications = onSnapshot(applicationQuery, (snapshot) => {
+        allApplications = snapshot.docs.map(item => ({
+          id: item.id,
+          ...item.data()
+        }));
+
+        renderAdminApplications();
+      }, error => {
+        console.error(error);
+        $("applicationAdminList").textContent =
+          "신청 내역을 불러오지 못했습니다.";
+      });
+    }
+
+
+    function renderAdminApplications() {
+      if (allApplications.length === 0) {
+        $("applicationAdminList").textContent = "접수된 신청이 없습니다.";
+        return;
+      }
+
+      $("applicationAdminList").innerHTML = allApplications.map(item => {
+        const date = item.createdAt?.toDate
+          ? item.createdAt.toDate().toLocaleString("ko-KR")
+          : "시간 정보 없음";
+
+        return `
+          <div class="admin-item">
+            <strong>${escapeHTML(item.name || "")}</strong>
+            <p>나이: ${escapeHTML(item.age ?? "")}</p>
+            <p>관심 분야: ${escapeHTML(item.field || "")}</p>
+            <p>신청 이유: ${escapeHTML(item.reason || "")}</p>
+            <p>아이디어: ${escapeHTML(item.idea || "")}</p>
+            <p>접수 일시: ${escapeHTML(date)}</p>
+          </div>
+        `;
+      }).join("");
+    }
+
+
+    // 9. 관리자: 후기 삭제 및 수정
+    function renderAdminReviews() {
+      if (!currentUser || currentUser.uid !== ADMIN_UID) return;
+
+      if (allReviews.length === 0) {
+        $("reviewAdminList").textContent = "등록된 후기가 없습니다.";
+        return;
+      }
+
+      $("reviewAdminList").innerHTML = allReviews.map(review => `
+        <div class="admin-item">
+          <strong>${escapeHTML(review.name || "")}</strong>
+          <p>${"★".repeat(Number(review.rating) || 5)}</p>
+          <p>${escapeHTML(review.content || "")}</p>
+          <button type="button" data-edit="${review.id}">수정</button>
+          <button type="button" class="delete" data-delete="${review.id}">삭제</button>
+        </div>
+      `).join("");
+
+      $("reviewAdminList").querySelectorAll("[data-delete]").forEach(button => {
+        button.addEventListener("click", async () => {
+          if (!confirm("이 후기를 삭제할까요?")) return;
+
+          try {
+            await deleteDoc(doc(db, "reviews", button.dataset.delete));
+          } catch (error) {
+            console.error(error);
+            alert("후기 삭제에 실패했습니다.");
+          }
+        });
+      });
+
+      $("reviewAdminList").querySelectorAll("[data-edit]").forEach(button => {
+        button.addEventListener("click", async () => {
+          const review = allReviews.find(
+            item => item.id === button.dataset.edit
+          );
+
+          if (!review) return;
+
+          const newContent = prompt("수정할 후기 내용을 입력하세요.", review.content);
+          if (newContent === null) return;
+
+          const trimmed = newContent.trim();
+          if (!trimmed) {
+            alert("후기 내용을 입력해주세요.");
+            return;
+          }
+
+          try {
+            await updateDoc(doc(db, "reviews", review.id), {
+              content: trimmed,
+              updatedAt: serverTimestamp()
+            });
+          } catch (error) {
+            console.error(error);
+            alert("후기 수정에 실패했습니다.");
+          }
+        });
+      });
+    }
+
+
+    // 10. 관리자: 메인 문구 불러오기
+    async function loadHomepageSettings() {
+      try {
+        const snapshot = await getDoc(settingsRef);
+
+        if (snapshot.exists()) {
+          const data = snapshot.data();
+
+          if (data.heroTitle) {
+            $("heroTitle").innerHTML = escapeHTML(data.heroTitle)
+              .replace(/\n/g, "<br>");
+            $("editHeroTitle").value = data.heroTitle;
+          }
+
+          if (data.heroDescription) {
+            $("heroDescription").innerHTML = escapeHTML(data.heroDescription)
+              .replace(/\n/g, "<br>");
+            $("editHeroDescription").value = data.heroDescription;
+          }
+        } else {
+          $("editHeroTitle").value = "당신의 아이디어가\n가능성이 되는 곳";
+          $("editHeroDescription").value =
+            "막연한 아이디어에서 구체적인 실행까지.\n셰르파가 당신의 새로운 도전을 함께 설계합니다.";
+        }
+      } catch (error) {
+        console.error(error);
+        $("settingsStatus").textContent = "설정을 불러오지 못했습니다.";
+      }
+    }
+
+
+    // 11. 관리자: 메인 문구 저장
+    $("saveSettingsButton").addEventListener("click", async () => {
+      if (!currentUser || currentUser.uid !== ADMIN_UID) return;
+
+      const heroTitle = $("editHeroTitle").value.trim();
+      const heroDescription = $("editHeroDescription").value.trim();
+
+      try {
+        await setDoc(settingsRef, {
+          heroTitle,
+          heroDescription,
+          updatedAt: serverTimestamp()
+        }, { merge: true });
+
+        $("heroTitle").innerHTML = escapeHTML(heroTitle).replace(/\n/g, "<br>");
+        $("heroDescription").innerHTML =
+          escapeHTML(heroDescription).replace(/\n/g, "<br>");
+
+        $("settingsStatus").textContent = "홈페이지 문구가 저장되었습니다.";
+      } catch (error) {
+        console.error(error);
+        $("settingsStatus").textContent = "문구 저장에 실패했습니다.";
+      }
+    });
+
+  </script>
+</body>
+</html>
